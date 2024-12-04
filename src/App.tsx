@@ -1,24 +1,24 @@
-import React from 'react';
-import logo from './logo.svg';
 import './App.css';
-
+import { Footer } from './components/footer/Footer';
+import { Header } from './components/header/Header';
+import { Main } from './components/main/Main';
+import {Search} from './components/search/Search'
+import { useState } from 'react';
 function App() {
+  const [search, setSearch] = useState<boolean>(false);
+  console.log(search);
+  const handleButtonClick = (newValue: string) => {
+    console.log(typeof(setSearch))
+    setSearch(!search);
+  };
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <Search button={setSearch} search={search}/>
+    <Header button={setSearch} search={search}/>
+    <div className="content">
+    <Main/>
+    </div>
+    <Footer/>
     </div>
   );
 }

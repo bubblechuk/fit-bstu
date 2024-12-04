@@ -1,0 +1,128 @@
+.close {
+    right: 0;
+    top: 0;
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    border-radius: 2px;
+    background-color: var(--_gray);
+    color: white;
+    text-align: center;
+    line-height: 30px;
+    transition: 0.35s ease-in-out;
+    border-radius: 5px;
+}
+.close:hover {
+    cursor: pointer;
+    background-color: var(--_red);
+}
+.search {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    z-index: 4;
+    width: 100vw;
+    height: 100vh;
+    opacity: 0;
+    visibility: hidden;
+    backdrop-filter: blur(0em);
+    transition: opacity 0.4s ease, visibility 0.4s ease, backdrop-filter 0.4s ease;
+}
+
+.search.show {
+    opacity: 1;
+    visibility: visible;
+    backdrop-filter: blur(1.5em) brightness(75%);
+}
+
+.search.hide {
+    opacity: 0;
+    visibility: hidden;
+    backdrop-filter: blur(0em);
+}
+.title {
+    color: white;
+    font-size: 36px;
+}
+.window {
+    position: relative;
+    width: 90%; /* Сделано более адаптивным */
+    max-width: 1200px;
+    height: 75vh;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+    transform: translateY(-20px);
+    transition: transform 0.4s ease, opacity 0.4s ease;
+}
+
+.search.show .window {
+    transform: translateY(0); /* Окно плавно поднимается */
+    opacity: 1;
+}
+
+.search.hide .window {
+    transform: translateY(-20px); /* Окно плавно уходит вверх */
+    opacity: 0;
+}
+
+.input {
+    height: 50px;
+    width: 100%;
+    max-width: 1000px;
+    padding: 0 10px;
+    font-size: 28px;
+    background-color: var(--_gray);
+    color: white;
+    border-radius: 2px;
+    border: none;
+    transition: border 0.3s ease;
+    margin-top: 25px;
+}
+
+.input:focus {
+    outline: none;
+    border: 1px solid var(--_red);
+}
+
+.suggestions {
+    background-color: var(--_gray);
+    width: 100%;
+    max-width: 1000px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 10px;
+    margin-top: 10px;
+}
+
+.suggestion {
+    display: flex;
+    gap: 15px;
+    color: white;
+    align-items: center;
+}
+
+.suggestion .image {
+    width: 150px;
+    height: 100px;
+    background-color: var(--_red);
+    border-radius: 5px;
+    flex-shrink: 0;
+}
+.desc {
+    height: 100%;
+    width:100%;
+}
+.desc h1 {
+    font-size: 18px;
+    margin: 0;
+}
+
+.desc p {
+    font-size: 14px;
+    margin: 5px 0 0;
+}

@@ -1,0 +1,22 @@
+.footer {
+    height: 50px;
+    background-color: var(--_black);
+    width: 100%;
+    color: white;
+    font-size: 24px;
+    display: flex;
+    justify-content: center;
+}
+.content {
+    width: 1366px;
+    padding: 0 10px;
+    line-height: 50px;
+    display: flex;
+    justify-content: space-between;
+}
+.text {display: block;}
+@media (max-width: 450px) {
+    .content {
+        font-size: 16px;
+    }
+}
