@@ -130,5 +130,11 @@
     }
 }
 @media (prefers-color-scheme: light) {
-    
+    .sliderOption div, .newshead {
+        color: black;
+    }
+    .button span, .option {
+        color: black;
+        filter: invert(0);
+    }
 }

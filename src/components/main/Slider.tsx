@@ -47,14 +47,6 @@ export const MySlider = () => {
       image: "https://i.imgur.com/olIk0jP.jpeg",
     },
   ];
-
-  const renderArrows = () => {
-    return (
-      <div style={{width: "100%", height: "100%", position: "relative"}}>
-    
-      </div>
-      )
-  }
   const settings = {
     dots: false,
     arrows: false,

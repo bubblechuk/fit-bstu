@@ -207,3 +207,30 @@
         background-position-x: -160px;
     }
 }
+@media (prefers-color-scheme: light) {
+    .block {
+        border: 1px solid white !important;
+    }
+    .block .img {
+        background-color: var(--_darkerred);
+    }
+    .block:hover {
+        border: 1px solid black !important;
+    }
+    .block span, .title.below, .newshead {
+        color: black;
+    }
+    .abiturient {
+        filter: brightness(200%);
+    }
+    .abiturient:hover {
+        filter: brightness(150%);
+    }
+    .line {
+        background-color: rgb(255,255,255, 0.85);
+    }
+    .arrow img{
+        filter: invert(0);
+    }
+
+}

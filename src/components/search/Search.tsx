@@ -1,4 +1,3 @@
-import React from "react"
 import styles from "./search.module.css"
 interface ISearch {
     button: React.Dispatch<React.SetStateAction<boolean>>;
