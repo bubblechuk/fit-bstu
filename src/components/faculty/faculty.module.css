@@ -1,0 +1,194 @@
+.formblock {
+    display: flex;
+    justify-content: center;
+    margin: 25px 0;
+}
+.label {
+    color: white;
+    font-size: 24px;
+}
+.form {
+    width: 950px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+.input {
+    padding: 0 10px;
+    width: 930px;
+    height: 50px;
+    font-size: 16px;
+    background-color: var(--_gray);
+    color: white;
+    border: 1px solid white;
+    border-radius: 5px;
+    outline: none;
+    transition: background-color 0.5s ease-in-out;
+}
+.input:focus {
+    background-color: rgb(70, 70, 70);
+    border-color: var(--_red);
+}
+.input.textarea {
+    font-family: inherit;
+    padding: 10px 10px;
+    max-width: 930px;
+    min-width: 930px;
+}
+.input.file {
+    padding: 0;
+    color: white;
+    border: none;
+    height: 30px;
+    width: fit-content;
+}
+.input.file:hover {
+    background-color: none !important;
+}
+.input.file::file-selector-button {
+    border: none;
+    background-color: var(--_red);
+    color: white;
+    height: 30px;
+    width: 110px;
+    border-radius: 5px;
+    transition: 0.5s ease-in-out;
+}
+.input.file::file-selector-button:hover {
+    background-color: var(--_darkred);
+    cursor: pointer;
+}
+.input.button {
+    width: 220px;
+    height: 45px;
+    font-size: 20px;
+    background-color: var(--_red);
+    transition: 0.5s ease-in-out;
+    border: none;
+}
+.input.button:hover {
+    background-color: var(--_darkred);
+    cursor: pointer;
+}
+.person {
+    display: flex;
+    justify-content: center;
+}
+.person img {
+    width: 186px;
+    height: 250px;
+    background-color: var(--_red);
+}
+.person p {
+    color: white;
+    font-size: 18px;
+    font-weight: 600;
+}
+.desc {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 10px 25px;
+    width: 406px;
+}
+.desc h1, h2 {
+    color: white;
+    margin: 0;
+    font-size: 27px;
+}
+p, h1, h2 {
+    width: fit-content;
+}
+.desc h2 {
+    margin-bottom: 15px;
+    font-size: 18px;
+}
+.desc a {
+    color: var(--_red);
+    text-decoration: none;
+    cursor: pointer;
+}
+.desc a:hover {
+    text-decoration: underline;
+}
+.persons {
+    max-width: 1366px;
+    width: fit-content;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 25px 0;
+    gap: 15px;
+}
+.person.blank img {
+    object-position: 0 -50px;
+    background-color: white;
+}
+
+@media (max-width: 600px) {
+    .desc {
+        padding: 0;
+    }
+    .contacts, .persons, .person .desc {
+        width: 100%;
+    }
+    .label {
+        text-align: center;
+    }
+    .persons {
+        flex-direction: column;
+    }
+    .person {
+        flex-direction: column;
+        align-items: center;
+        width: calc(100% - 20px);
+        padding: 0 10px;
+    }
+    .desc h1, .desc h2, .desc p {
+        text-align: center;
+        width: 100%;
+    }
+}
+@media (max-width: 950px) {
+    .form {
+        width: calc(100% - 20px);
+        align-items: center;
+    }
+    .form .input {
+        width: calc(100% - 20px);
+    }
+    .form .input.textarea {
+        max-width: calc(100% - 20px);
+        min-width: calc(100% - 20px);
+    }
+    .input.button, .input.file {
+        width: 100%;
+        padding: 0 10px;
+    }
+}
+@media (prefers-color-scheme: light) {
+    .person.blank img {
+        filter: invert(25%);
+    }
+    .form .input {
+        border: 1px solid black;
+        color: black;
+        transition: 0.5s ease-in-out;
+    }
+    .desc h1, .desc h2, .desc p, .label {
+        color: black;
+    }
+    .form .input:focus {
+        background-color: rgb(224, 224, 224);
+        border: 1px solid red;
+    }
+    .input.file, .input.button {
+        border: none;
+    }
+    .input.button {
+        color: white;
+    }
+    .input.button:hover, .input.file::file-selector-button:hover {
+        background-color: var(--_darkerred);
+    }
+}

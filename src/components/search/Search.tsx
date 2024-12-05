@@ -1,9 +1,17 @@
+import { useEffect } from "react";
 import styles from "./search.module.css"
 interface ISearch {
     button: React.Dispatch<React.SetStateAction<boolean>>;
     search: boolean;
 }
 export const Search: React.FC<ISearch> = ({ search, button }) => {
+    useEffect(() => {
+        if (search) {
+            document.documentElement.style.overflowY = "hidden";
+        } else {
+            document.documentElement.style.overflowY = "";
+        }
+    }, [search])
     return (
         <div className={`${styles.search} ${search ? styles.show : styles.hide}`}>
             <div className={styles.window}>

@@ -99,7 +99,10 @@
     opacity: 0; 
     transition-delay: 0s; 
 }
-
+.sliderOption a {
+    text-decoration: none;
+    color: white;
+}
 @media (prefers-color-scheme: dark) {
     .header {
         background-color: var(--_black);
@@ -118,7 +121,7 @@
         padding: 0 10px;
     }
 }
-@media (max-width: 450px) {
+@media (max-width: 500px) {
     .show {
         width: 100%;
     }

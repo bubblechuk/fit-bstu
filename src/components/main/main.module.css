@@ -1,7 +1,3 @@
-.main {
-    width: 1366px;
-    min-height: 100vh;
-}
 .slide {
     background-color: var(--_red);
     width: 1366px;

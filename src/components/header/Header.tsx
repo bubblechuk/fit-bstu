@@ -4,19 +4,24 @@ import Logo from "./logo.png";
 import Search from "./search.svg";
 import Menu from "./menu.svg";
 import { useState } from "react";
+import { Link } from "react-router";
 interface ButtonHandler {
     button: React.Dispatch<React.SetStateAction<boolean>>;
     search: boolean;
 }
+interface SliderOption {
+    name: string,
+    link: string
+}
 export const Header: React.FC<ButtonHandler> = ({button, search}) => {
     const [slider, setSlider] = useState<boolean>(false);
-    const sliderOptions: string[] = [
-        "Главная",
-        "О факультете",
-        "Студентам",
-        "Абитуриентам",
-        "Работодателю",
-        "Сайт БГТУ"];
+    const sliderOptions: SliderOption[] = [
+        {name: "Главная", link: '/'},
+        {name: "О факультете", link: "/faculty"},
+        {name: "Студентам", link: "/student"},
+        {name: "Абитуриентам", link: "/abiturient"},
+        {name: "Работодателю", link: "/employer"},
+    ];
     return (
         <div className={styles.header}>
             <div className={styles.menu}>
@@ -36,10 +41,15 @@ export const Header: React.FC<ButtonHandler> = ({button, search}) => {
                         <div 
                         className={`${styles.sliderOption} ${slider ? styles.show : styles.hide}`}
                         >
-                            <div>{elem}</div>
+                            <Link to={elem.link} onClick={() => {setSlider(!slider)}}><div>{elem.name}</div></Link>
                         </div>
                     )
                     )}
+                    <div 
+                        className={`${styles.sliderOption} ${slider ? styles.show : styles.hide}`}
+                        >
+                            <a href="https://belstu.by" target="_blank"><div>Сайт БГТУ</div></a>
+                        </div>
                 </div>
             </div>
         </div>

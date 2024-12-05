@@ -8,11 +8,14 @@
 html::-webkit-scrollbar {
   display: none;
 }
+::selection {
+  background: var(--_darkerred);
+}
 html {
   overflow-y: scroll;
   scrollbar-width: none;
   -ms-overflow-style: none;
-  overflow-x: hidden;
+  /* overflow-x: hidden; */
   scrollbar-color: red, blue;
 }
 body {
@@ -27,6 +30,15 @@ body {
 }
 p {
   margin: 0;
+}
+.main {
+  width: 1366px;
+  min-height: 100vh;
+}
+@media (max-width: 500px) {
+  .main {
+    width: 100%;
+  }
 }
 @media (prefers-color-scheme: light) {
   :root {

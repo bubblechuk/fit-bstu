@@ -78,7 +78,7 @@
     background-color: var(--_gray);
     color: white;
     border-radius: 2px;
-    border: none;
+    border: 1px solid var(--_gray);
     transition: border 0.3s ease;
     margin-top: 25px;
 }
@@ -132,7 +132,13 @@
     }
 }
 @media (max-width: 1130px) {
+    .window {
+        width: 100%;
+    }
     .input, .suggestions {
-        width: calc(100% - 20px);
+        width: calc(100% - 40px);
+    }
+    .close {
+        right: 10px;
     }
 }

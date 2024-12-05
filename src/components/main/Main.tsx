@@ -3,7 +3,7 @@ import bg_abiturient from './bg_abiturient.jpg'
 import { MySlider } from "./Slider"
 export const Main = () => {
     return (
-        <div className={styles.main}>
+        <div className="main">
             <MySlider/>
             <div className={styles.abiturient}>
                 <p>Абитуриент? Присоединяйся к нам!</p>
