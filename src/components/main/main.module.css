@@ -72,7 +72,7 @@
     justify-content: center;
     background-image: url("./bg_abiturient.jpg");
     filter: brightness(100%)saturate(200%);
-    transition: 0.5s ease-in-out;
+    transition: filter 0.5s ease-in-out;
 }
 .abiturient:hover {
     filter: brightness(95%);
@@ -144,6 +144,7 @@
 }
 .news .desc {
     font-size: 20px;
+    padding: 5px 0;
 }
 .abiturient {
     width: 100%;
