@@ -3,20 +3,58 @@ import nav from '../navigation.module.css'
 import React from 'react';
 import { useForm, SubmitHandler } from "react-hook-form";
 import {useState} from 'react';
+import {BrowserRouter as Routes, Route, Outlet, Link} from 'react-router-dom'
+declare type FormValues = {
+    fullName: string;
+    email: string;
+    phone: string;
+    subject: string;
+    message: string;
+    file: FileList;
+  };
 interface navOption {
     name: string,
     link: string
 }
 const importAll = (requireContext: __WebpackModuleApi.RequireContext): string[] => 
     requireContext.keys().map((key) => requireContext(key).default || requireContext(key));
-const Contacts = () => {
+export const Contacts = () => {
+    const { register, handleSubmit, formState: { errors }, reset } = useForm<FormValues>();
     const images = importAll(require.context('./images', false, /\.(png|jpe?g|svg)$/));
     const scrollToForm = () => {
         document.getElementById("form")?.scrollIntoView({ behavior: "smooth" });
     }
-    const handleSubmit = () => {
-
-    }
+    const handleEmail: SubmitHandler<FormValues> = async (data) => {
+        console.log("Sending email with data:", data); 
+        try {
+          const response = await fetch('http://localhost:5000/send-email', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              email: data.email,
+              subject: "Спасибо за покупку!",
+              message: `Ваш заказ успешно оформлен!`
+            }),
+          });
+      
+          if (!response.ok) {
+            throw new Error('Failed to send email');
+          }
+      
+          const result = await response.json();
+          alert(result.message);
+        } catch (error) {
+          console.error('Error in handleEmail:', error);
+          alert('Не удалось отправить письмо');
+        }
+      };
+      
+      
+    const onSubmit: SubmitHandler<FormValues> = (data) => {
+        console.log(data);
+        handleEmail(data);
+        reset();
+    };
     return (
         <div className={styles.contacts}>
             <div className={styles.persons}>
@@ -64,64 +102,96 @@ const Contacts = () => {
             </div>
         </div>
         <div className={styles.formblock}>
-        <form className={styles.form} onSubmit={handleSubmit} id="form">
-            <label 
-                className={styles.label}>
-                    Электронное обращение
-            </label>
-            <input 
-                className={styles.input} 
-                placeholder="Ваше ФИО"/>
-            <input 
-                className={styles.input} 
-                placeholder="Ваш email"/>
-            <input 
-                className={styles.input} 
-                placeholder="Ваш телефон"/>
-            <input 
-                className={styles.input} 
-                placeholder="Тема"/>
-            <textarea 
-                className={`${styles.input} ${styles.textarea}`} 
-                placeholder="Сообщение"/>
-            <input 
-                className={`${styles.input} ${styles.file}`} 
-                type="file"/>
-            <button 
-                className={`${styles.input} ${styles.button}`}>
-                    Отправить
-            </button>
-        </form>
+        <form className={styles.form} onSubmit={handleSubmit(onSubmit)} id="form">
+      <label className={styles.label}>Электронное обращение</label>
+      
+      <input 
+        {...register("fullName", { required: "Введите ваше ФИО" })} 
+        className={styles.input} 
+        placeholder="Ваше ФИО" 
+      />
+      {errors.fullName && <p className={styles.error}>{errors.fullName.message}</p>}
+      
+      <input 
+        {...register("email", { 
+          required: "Введите ваш email", 
+          pattern: { 
+            value: /^\S+@\S+$/i, 
+            message: "Некорректный email"
+          }
+        })} 
+        className={styles.input} 
+        placeholder="Ваш email" 
+      />
+      {errors.email && <p className={styles.error}>{errors.email.message}</p>}
+      
+      <input 
+        {...register("phone", { 
+          pattern: { 
+            value: /^\+?\d{10,15}$/, 
+            message: "Некорректный телефон"
+          }
+        })} 
+        className={styles.input} 
+        placeholder="Ваш телефон" 
+      />
+      
+      <input 
+        {...register("subject")} 
+        className={styles.input} 
+        placeholder="Тема" 
+      />
+      
+      <textarea 
+        {...register("message", { required: "Введите сообщение" })} 
+        className={`${styles.input} ${styles.textarea}`} 
+        placeholder="Сообщение" 
+      />
+      {errors.message && <p className={styles.error}>{errors.message.message}</p>}
+      
+      <input 
+        {...register("file")} 
+        className={`${styles.input} ${styles.file}`} 
+        type="file" 
+      />
+      <button 
+        type="submit" 
+        className={`${styles.input} ${styles.button}`}>
+        Отправить
+      </button>
+    </form>
         </div>
         </div>
     )
 }
 export const Faculty = () => {
-    const [button, setActiveButton] = useState<Number>(0);
-    const navOptions: navOption[] = [
-        {name: "О факультете", link: "/about"},
-        {name: "Контакты", link: "/contacts"},
-        {name: "Воспитательная работа", link: "/eduwork"},
-        {name: "Стипендии", link: "/scolarship"},
-        {name: "Общежитие", link: "/dormitory"},
-    ];
-    return (
-        <div className="main">
-            <p className={nav.header}>Факультет</p>
-            <div className={nav.navigation}>
-                {navOptions.map((elem, index) => {
-                    return(
-                        <div 
-                            className={`${nav.navbutton} ${button===index?nav.show:null}`}
-                            onClick={() => {setActiveButton(index)}}>
-                            {elem.name}
-                        </div>
-                    )
-                })}
-            </div>
-            <div className={styles.formblock}>
-                <Contacts/>
-            </div>
-        </div>
-    )
-}
+  const [activeButton, setActiveButton] = useState<number>(0);
+  const navOptions: navOption[] = [
+      { name: "О факультете", link: "about" },
+      { name: "Контакты", link: "contacts" },
+      { name: "Воспитательная работа", link: "eduwork" },
+      { name: "Стипендии", link: "scolarship" },
+      { name: "Общежитие", link: "dormitory" },
+  ];
+
+  return (
+      <div className={styles.faculty}>
+          <p className={nav.header}>Факультет</p>
+          <div className={nav.navigation}>
+              {navOptions.map((elem, index) => (
+                  <Link
+                      key={index}
+                      to={elem.link} 
+                      className={`${nav.navbutton} ${activeButton === index ? nav.show : ''}`}
+                      onClick={() => setActiveButton(index)}
+                  >
+                      {elem.name}
+                  </Link>
+              ))}
+          </div>
+          <div className={styles.content}>
+              <Outlet /> 
+          </div>
+      </div>
+  );
+};

@@ -1,7 +1,11 @@
 import styles from "./main.module.css"
 import bg_abiturient from './bg_abiturient.jpg'
 import { MySlider } from "./Slider"
+import { useSelector } from "react-redux"
+import { State, newsData } from "../../redux/slices"
 export const Main = () => {
+    const news = useSelector((state: State)=> state.form.news);
+    console.log(news)
     return (
         <div className="main">
             <MySlider/>
@@ -12,54 +16,18 @@ export const Main = () => {
             <div className={styles.newsblock}>
                 <p className={styles.newshead}>Новости факультета</p>
                 <div className={styles.news}>
-                <div className={styles.block}>
-                    <img className={styles.img}/>
-                    <div className={styles.text}>
-                    <span>19-02-2024</span>
-                    <span className={styles.head}>News Title</span>
-                    <span className={styles.desc}>blablablablablablablabla</span>
-                    </div>
-                </div>
-                <div className={styles.block}>
-                    <img className={styles.img}/>
-                    <div className={styles.text}>
-                    <span>19-02-2024</span>
-                    <span className={styles.head}>News Title</span>
-                    <span className={styles.desc}>blablablablablablablabla</span>
-                    </div>
-                </div>
-                <div className={styles.block}>
-                    <img className={styles.img}/>
-                    <div className={styles.text}>
-                    <span>19-02-2024</span>
-                    <span className={styles.head}>News Title</span>
-                    <span className={styles.desc}>blablablablablablablabla</span>
-                    </div>
-                </div>
-                <div className={styles.block}>
-                    <img className={styles.img}/>
-                    <div className={styles.text}>
-                    <span>19-02-2024</span>
-                    <span className={styles.head}>News Title</span>
-                    <span className={styles.desc}>blablablablablablablabla</span>
-                    </div>
-                </div>
-                <div className={styles.block}>
-                    <img className={styles.img}/>
-                    <div className={styles.text}>
-                    <span>19-02-2024</span>
-                    <span className={styles.head}>News Title</span>
-                    <span className={styles.desc}>blablablablablablablabla</span>
-                    </div>
-                </div>
-                <div className={styles.block}>
-                    <img className={styles.img}/>
-                    <div className={styles.text}>
-                    <span>19-02-2024</span>
-                    <span className={styles.head}>News Title</span>
-                    <span className={styles.desc}>blablablablablablablabla</span>
-                    </div>
-                </div>
+                    {news.map((elem) => {
+                        return(
+                        <div className={styles.block}>
+                            <img className={styles.img} src={elem.image}/>
+                            <div className={styles.text}>
+                                <span>{elem.date.day}-{elem.date.month}-{elem.date.year}</span>
+                                <span className={styles.head}>{elem.title}</span>
+                                <span className={styles.desc}>{elem.content.small}</span>
+                            </div>
+                        </div>
+                        )
+                    })}
             </div>
             <button className={styles.archive}>Архив новостей</button>
             </div>
