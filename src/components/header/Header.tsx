@@ -4,7 +4,7 @@ import Logo from "./logo.png";
 import Search from "./search.svg";
 import Menu from "./menu.svg";
 import { useState } from "react";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 interface ButtonHandler {
     button: React.Dispatch<React.SetStateAction<boolean>>;
     search: boolean;
@@ -14,6 +14,7 @@ interface SliderOption {
     link: string
 }
 export const Header: React.FC<ButtonHandler> = ({button, search}) => {
+    var navigate = useNavigate();
     const [slider, setSlider] = useState<boolean>(false);
     const sliderOptions: SliderOption[] = [
         {name: "Главная", link: '/'},
@@ -31,7 +32,7 @@ export const Header: React.FC<ButtonHandler> = ({button, search}) => {
                     <img className={styles.option} src={Search} alt="Search Icon" />
                     <span>Поиск</span>
                 </div>
-                <img className={styles.logo} src={Logo} alt="Logo" />
+                <img onClick={() => {navigate('/')}} className={styles.logo} src={Logo} alt="Logo" />
                 <div className={styles.button} onClick={() => setSlider(!slider)}>
                     <span>Меню</span>
                     <img className={styles.option} src={Menu} alt="Menu Icon" />

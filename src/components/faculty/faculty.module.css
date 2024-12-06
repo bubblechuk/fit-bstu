@@ -63,7 +63,7 @@
     height: 45px;
     font-size: 20px;
     background-color: var(--_red);
-    transition: 0.5s ease-in-out;
+    transition: background-color 0.5s ease-in-out;
     border: none;
 }
 .input.button:hover {
@@ -124,7 +124,9 @@ p, h1, h2 {
     object-position: 0 -50px;
     background-color: white;
 }
-
+.error {
+    color: var(--_red);
+}
 @media (max-width: 600px) {
     .desc {
         padding: 0;

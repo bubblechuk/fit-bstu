@@ -16,7 +16,6 @@ html {
   scrollbar-width: none;
   -ms-overflow-style: none;
   /* overflow-x: hidden; */
-  scrollbar-color: red, blue;
 }
 body {
   margin: 0;
