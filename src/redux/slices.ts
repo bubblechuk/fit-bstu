@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import news from './news.json'; 
+import news from '../data/news.json'; 
 
 export interface newsData {
   image: string;
@@ -17,6 +17,7 @@ export interface newsData {
     urls: string[];
     others: string[];
   };
+  id: number;
 }
 
 export interface State {

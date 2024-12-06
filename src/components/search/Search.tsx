@@ -3,12 +3,14 @@ import { useSelector } from "react-redux";
 import styles from "./search.module.css"
 import {State, newsData} from "../../redux/slices"
 import { useState } from "react";
+import { useNavigate } from "react-router";
 interface ISearch {
     button: React.Dispatch<React.SetStateAction<boolean>>;
     search: boolean;
 }
 export const Search: React.FC<ISearch> = ({ search, button }) => {
     const news = useSelector((state: State)=> state.form.news);
+    const navigate = useNavigate();
     const [news_searched, setSearched] = useState<newsData[]>([]);
     const handleSearch = (value: string) => {
         setSearched(news
@@ -19,6 +21,9 @@ export const Search: React.FC<ISearch> = ({ search, button }) => {
                                     value
                                     .toLowerCase()
                                 )))
+        if (value.trim().length === 0) {
+            setSearched([])
+        }
         console.log(news_searched)
     }
     useEffect(() => {
@@ -33,10 +38,14 @@ export const Search: React.FC<ISearch> = ({ search, button }) => {
             <div className={styles.window}>
                 <p className={styles.title}>Поиск</p>
                 <input onChange={(e) => {handleSearch(e.target.value)}}className={styles.input} placeholder="Поиск по новостям..."></input>
-                <div className={styles.suggestions}>
+                <div className={`${styles.suggestions} ${news_searched.length === 0 ? styles.hide: null}`}>
                     {news_searched.map((elem)=>{
                         return(
-                            <div className={styles.suggestion}>
+                            <div className={styles.suggestion} 
+                            onClick={()=>{
+                                navigate(`/article?id=${elem.id}`)
+                                button(!search);
+                                }}>
                                 <img className={styles.image} src={elem.image}/>
                                 <div className={styles.desc}>
                                     <h1>{elem.title}</h1>

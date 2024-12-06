@@ -3,9 +3,23 @@ import bg_abiturient from './bg_abiturient.jpg'
 import { MySlider } from "./Slider"
 import { useSelector } from "react-redux"
 import { State, newsData } from "../../redux/slices"
+import { useEffect, useState } from "react"
+import { useNavigate } from "react-router"
 export const Main = () => {
     const news = useSelector((state: State)=> state.form.news);
-    console.log(news)
+    const [pages, setPage] = useState<number>(6);
+    const navigate = useNavigate();
+    useEffect(() => {
+        const handleResize = () => {
+            if (window.innerWidth < 600) {
+              setPage(3);
+            } else {
+              setPage(6);
+            }
+          };
+          handleResize();
+          window.addEventListener("resize", handleResize);
+    }, [])
     return (
         <div className="main">
             <MySlider/>
@@ -16,14 +30,22 @@ export const Main = () => {
             <div className={styles.newsblock}>
                 <p className={styles.newshead}>Новости факультета</p>
                 <div className={styles.news}>
-                    {news.map((elem) => {
+                    {news.slice(0, pages).map((elem) => {
                         return(
-                        <div className={styles.block}>
+                        <div className={styles.block} onClick={()=>{navigate(`/article?id=${elem.id}`)}}>
                             <img className={styles.img} src={elem.image}/>
                             <div className={styles.text}>
-                                <span>{elem.date.day}-{elem.date.month}-{elem.date.year}</span>
-                                <span className={styles.head}>{elem.title}</span>
-                                <span className={styles.desc}>{elem.content.small}</span>
+                                <span>
+                                    {elem.date.day}-
+                                    {elem.date.month}-
+                                    {elem.date.year}
+                                </span>
+                                <span className={styles.head}>
+                                    {elem.title}
+                                </span>
+                                <span className={styles.desc}>
+                                    {elem.content.small}
+                                </span>
                             </div>
                         </div>
                         )
