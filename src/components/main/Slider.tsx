@@ -7,14 +7,16 @@ import arrow_left from "./left.svg";
 import arrow_right from "./right.svg";
 import React from "react";
 import { useRef } from "react";
+import Slider1 from './slider.jpg'
+import Slider2 from './slider2.jpg'
+import Slider3 from './slider3.jpg'
 export const MySlider = () => {
   const slider = useRef<Slider | null>(null);
   const slides = [
     {
       id: 1,
-      title: "ФИТ БГТУ",
       content: (
-        <div className={styles.deco}>
+        <div className={styles.deco} style={{backgroundImage: `url(${Slider1})`}}>
           <div className={styles.line}>
             <div className={styles.title}>
               <span className={styles.name}>
@@ -31,20 +33,22 @@ export const MySlider = () => {
           </div>
         </div>
       ),
-      image: "https://i.imgur.com/olIk0jP.jpeg",
     },
     {
       id: 2,
-      title: "Лучшие студенты",
-      content: "Только у нас!",
-      image:
-        "https://neutrongroup.cachefly.net/fasttrak.mvc/content/v2/themes/tdbank/img/students.jpg",
+      content: (
+        <div className={styles.deco} style={{backgroundImage: `url(${Slider2})`, backgroundPositionX: "0"}}>
+
+        </div>
+      ),
     },
     {
       id: 3,
-      title: "Поступи в БГТУ",
-      content: "Лучший выбор!",
-      image: "https://i.imgur.com/olIk0jP.jpeg",
+      content: (
+        <div className={styles.deco} style={{backgroundImage: `url(${Slider3})`, backgroundPositionX: "0", backgroundPositionY: "-400px"}}>
+
+        </div>
+      ),
     },
   ];
   const settings = {
@@ -52,8 +56,8 @@ export const MySlider = () => {
     arrows: false,
     infinite: true,
     speed: 500,
-    autoplay: false,
-    autoplaySpeed: 7000,
+    autoplay: true,
+    autoplaySpeed: 10000,
     slidesToShow: 1,
     slidesToScroll: 1,
   };

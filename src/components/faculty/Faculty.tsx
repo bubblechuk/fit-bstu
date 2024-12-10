@@ -19,21 +19,36 @@ interface navOption {
 const importAll = (requireContext: __WebpackModuleApi.RequireContext): string[] => 
     requireContext.keys().map((key) => requireContext(key).default || requireContext(key));
 export const Contacts = () => {
+  
     const { register, handleSubmit, formState: { errors }, reset } = useForm<FormValues>();
     const images = importAll(require.context('./images', false, /\.(png|jpe?g|svg)$/));
     const scrollToForm = () => {
         document.getElementById("form")?.scrollIntoView({ behavior: "smooth" });
     }
     const handleEmail: SubmitHandler<FormValues> = async (data) => {
-        console.log("Sending email with data:", data); 
+        console.log("Отправляем сообщение:", data); 
+        const emailContent = `
+        <div style="width: 1024px; height: fit-content;">
+  <div style="height: 80px; background-color: black; display: flex">
+    <img 
+      src="https://it.belstu.by/wp-content/uploads/2019/05/LogoFIT-1-e1557999163520.png"
+      style="height: 60px; margin: 10px"/>
+    <h1 style="color: white; line-height: 55px; margin: 10px">Факультет информационных технологий БГТУ</h1>
+  </div>
+  <div style="padding: 10px; font-size: 18px; background-color: #262121" color: white !important>
+      <p style="color: white">Здравствуйте, ${data.fullName}! Спасибо за ваше электронное обращение. Оно получено, и сейчас находится в обработке. Спасибо за ожидание.</p>
+      <p style="font-size: 14px; color: white;">С уважением,<br> деканат факультета информационных технологий.</p>
+  </div>
+</div>
+`
         try {
           const response = await fetch('http://localhost:5000/send-email', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
               email: data.email,
-              subject: "Спасибо за покупку!",
-              message: `Ваш заказ успешно оформлен!`
+              subject: "Мы получили ваше обращение",
+              html: emailContent
             }),
           });
       
@@ -165,7 +180,7 @@ export const Contacts = () => {
     )
 }
 export const Faculty = () => {
-  const [activeButton, setActiveButton] = useState<number>(0);
+  const [activeButton, setActiveButton] = useState<number>(1);
   const navOptions: navOption[] = [
       { name: "О факультете", link: "about" },
       { name: "Контакты", link: "contacts" },

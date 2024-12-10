@@ -42,15 +42,15 @@ async function sendEmail(email, subject, message, html) {
     const result = await transporter.sendMail(mailOptions);
     return result;
   } catch (error) {
-    console.error('Error sending email:', error);
-    throw new Error('Failed to send email');
+    console.error('Ошибка отправки сообщения:', error);
+    throw new Error('Не удалось отправить сообщение');
   }
 }
 
 app.post('/send-email', async (req, res) => {
-  const { email, subject, message } = req.body;
+  const { email, subject, message, html } = req.body;
   try {
-    await sendEmail(email, subject, message);
+    await sendEmail(email, subject, message, html);
     res.status(200).json({ message: 'Успешно!' });
   } catch (error) {
     res.status(500).json({ message: 'Произошла ошибка!' });  
@@ -58,5 +58,5 @@ app.post('/send-email', async (req, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
+  console.log(`Сервер запущен на порте ${PORT}`);
 });

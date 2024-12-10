@@ -1,0 +1,33 @@
+.head {
+ color: white;   
+ padding: 20px 0;
+}
+.title {
+    font-size: 36px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+.head p {
+    font-size: 20px;
+    font-weight: bold;
+}
+.head hr {
+    color: white;
+}
+.main {
+    width: 1000px;
+    min-height: 100vh;
+}
+@media (prefers-color-scheme: light) {
+    .head {
+        color: black;
+    }
+}
+@media (max-width: 600px) {
+    .main {
+        width: 100%;
+    }
+    .head {
+        padding: 15px;
+    }
+}

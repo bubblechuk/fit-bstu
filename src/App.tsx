@@ -7,7 +7,7 @@ import { Search } from './components/search/Search';
 import { useState } from 'react';
 import { NewsArchive } from './components/NewsArchive/NewsArchive';
 import './App.css'
-import { NewsPage } from './components/Newspage/NewsPage';
+import { NewsPage } from './components/NewsPage/NewsPage';
 function App() {
   const [search, setSearch] = useState<boolean>(false);
     return (
