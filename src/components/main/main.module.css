@@ -1,3 +1,4 @@
+
 .slide {
     background-color: var(--_red);
     width: 1366px;
@@ -13,7 +14,6 @@
     flex-direction: column;
     justify-content: center;
     height: 100%;
-    background-image: url("./slider.jpg");
     background-position: 20px;
     background-size: cover;
 }
@@ -25,22 +25,27 @@
     justify-content: center;
 }
 .title {
-    font-family: 'Bebas Neue';
+    
     font-weight: bold;
     color: white;
     font-size:52px;
-    height:250px;
-    padding: 50px 0;
     text-align: center;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 15px;
 }
 .title .name {
     color: var(--_red);
+    font-family: 'Bebas Neue';
+
 }
 .title.below {
-    font-weight:100;
+    font-weight:600;
     font-size: 30px;
-    font-family: "Century Gothic";
-    line-height: 5px;
+    padding: 0;
+    height: auto;
 }
 .title.below:before {
     content: "Белорусского государственного технологического университета";
@@ -140,11 +145,26 @@
     flex-direction: column;
 }
 .news .head {
-    font-size: 28px;
+    font-size: 26px;
+    font-weight: bold;
+    overflow: hidden; 
+    display: -webkit-box; 
+    -webkit-box-orient: vertical; 
+    -webkit-line-clamp: 2; 
+    line-clamp: 2; 
 }
 .news .desc {
     font-size: 20px;
     padding: 5px 0;
+    overflow: hidden;
+    display: -webkit-box; 
+    -webkit-box-orient: vertical; 
+    -webkit-line-clamp: 3; 
+    line-clamp: 3;
+}
+.news a {
+    text-decoration: none;
+    color: white;
 }
 .abiturient {
     width: 100%;
@@ -229,5 +249,7 @@
     .arrow img{
         filter: invert(0);
     }
-
+    .news a {
+        color: black;
+    }
 }

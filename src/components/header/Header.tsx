@@ -18,7 +18,7 @@ export const Header: React.FC<ButtonHandler> = ({button, search}) => {
     const [slider, setSlider] = useState<boolean>(false);
     const sliderOptions: SliderOption[] = [
         {name: "Главная", link: '/'},
-        {name: "О факультете", link: "/faculty"},
+        {name: "О факультете", link: "/faculty/contacts"},
         {name: "Студентам", link: "/student"},
         {name: "Абитуриентам", link: "/abiturient"},
         {name: "Работодателю", link: "/employer"},
@@ -49,7 +49,7 @@ export const Header: React.FC<ButtonHandler> = ({button, search}) => {
                     <div 
                         className={`${styles.sliderOption} ${slider ? styles.show : styles.hide}`}
                         >
-                            <a href="https://belstu.by" target="_blank"><div>Сайт БГТУ</div></a>
+                            <a href="https://belstu.by" ><div>Сайт БГТУ</div></a>
                         </div>
                 </div>
             </div>

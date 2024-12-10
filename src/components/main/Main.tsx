@@ -5,6 +5,7 @@ import { useSelector } from "react-redux"
 import { State, newsData } from "../../redux/slices"
 import { useEffect, useState } from "react"
 import { useNavigate } from "react-router"
+import { Link } from "react-router"
 export const Main = () => {
     const news = useSelector((state: State)=> state.form.news);
     const [pages, setPage] = useState<number>(6);
@@ -40,9 +41,9 @@ export const Main = () => {
                                     {elem.date.month}-
                                     {elem.date.year}
                                 </span>
-                                <span className={styles.head}>
+                                <Link to={`/article?id=${elem.id}`} title={elem.title} className={styles.head}> 
                                     {elem.title}
-                                </span>
+                                </Link>
                                 <span className={styles.desc}>
                                     {elem.content.small}
                                 </span>
@@ -51,7 +52,7 @@ export const Main = () => {
                         )
                     })}
             </div>
-            <button className={styles.archive}>Архив новостей</button>
+            <button className={styles.archive} onClick={() => {navigate('/archive')}}>Архив новостей</button>
             </div>
         </div>
     )

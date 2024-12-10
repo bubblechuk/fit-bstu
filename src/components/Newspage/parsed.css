@@ -1,0 +1,25 @@
+.post-text {
+    color: white;
+    font-size: 20px;
+}
+.post-text a {
+    color: var(--_red);
+}
+.post-text p {
+    margin-bottom: 15px;
+}
+.blocks-gallery-grid {
+    list-style: none;
+    padding: 0;
+}
+.blocks-gallery-item figure, .wp-block-image {
+    display: flex;
+    justify-content: center;
+}
+@media (prefers-color-scheme: light) {
+    .post-text {
+        color: black;
+        padding: 15px;
+    }
+    
+}

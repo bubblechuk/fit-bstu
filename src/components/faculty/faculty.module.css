@@ -175,7 +175,6 @@ p, h1, h2 {
     .form .input {
         border: 1px solid black;
         color: black;
-        transition: 0.5s ease-in-out;
     }
     .desc h1, .desc h2, .desc p, .label {
         color: black;
