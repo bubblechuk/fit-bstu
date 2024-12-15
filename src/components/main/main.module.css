@@ -1,4 +1,6 @@
-
+.main {
+    width: 1366px;
+}
 .slide {
     background-color: var(--_red);
     width: 1366px;
@@ -212,9 +214,11 @@
         justify-content: center;
     }
 }
-@media (max-width: 900px) {
-
-    .block {
+@media (max-width: 1366px) {
+    .main {
+        width: 100%;
+    }
+    .newsblock {
         width: calc(100% - 20px);
         margin: 0 10px;
     }

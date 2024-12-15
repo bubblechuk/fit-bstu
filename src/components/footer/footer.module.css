@@ -1,8 +1,8 @@
-.footer {
+/* .footer {
     height: 50px;
     background-color: var(--_black);
     width: 100%;
-    color: white;
+    color: black;
     font-size: 24px;
     display: flex;
     justify-content: center;
@@ -23,5 +23,196 @@
 @media (prefers-color-scheme: light) {
     .content .text {
         color: black;
+    }
+} */
+
+
+
+.footer {
+    width: 100%;
+    height: 400px;
+    background-color: var(--_darkerred);
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+.copyright {
+  color: white;
+  height: 100px;
+  display: flex;
+  align-items: center;
+}
+.footerBlock {
+    padding-top: 50px;
+    height: 300px;
+    width: 1280px;
+    display: flex;
+}
+.footerBlock a:visited, .footerBlock a:link {
+    text-decoration: none;
+    color: white;
+}
+.footerBlock ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+  .footerBlock li, .footerBlock h3 {
+    margin: 5px;
+    color: white;
+  }
+  .list {
+    width: 300px;
+  }
+  .links {
+    width: 500px;
+  }
+  .emblem {
+    width: 150px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .emblem button {
+    width: 100%;
+    border-radius: 25px;
+    background-color: var(--_darkerred);
+    color: white;
+    border: 1px solid white;
+    cursor: pointer;
+    transition: 0.5s;
+  }
+  .emblem button:hover {
+    background-color: white;
+    border: 1px solid var(--_darkerred);
+    color: var(--_darkerred);
+  }
+  .emblem img {
+    width: 150px;
+    margin-bottom: 10px;
+  }
+  .emblemimg {
+    content: url('./bstu_normal.png');
+  }
+  .social {
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-around;
+    width: 100px;
+  }
+  .contacts {
+    color: white;
+    width: 330px;
+  }
+  .contacts h2 {
+    margin: 5px 5px 0 5px;
+  }
+  .contacts p {
+    margin: 0 5px 5px 5px;
+  }
+  .social a, .social img {
+    width: 30px;
+    height: 30px;
+  }
+  .contacts h2 {
+    color: white;
+  }
+  .blind {
+    color: red;
+    font-weight: bold;
+    transition: 0.5s;
+}
+.blindmode {
+    font-size: 20px;
+    color: white;
+}
+.blind {
+    color: white;
+}
+.blind:hover {
+    color: black;
+}
+.ulfooter li, .contacts h2 {
+    transition: 0.5s;
+}
+@media (max-width: 1300px) {
+    .links {
+        display: none;
+    }
+    .footerBlock {
+        justify-content: center;
+    }
+}
+@media (max-width: 850px) {
+    .list {
+        display: none;
+    }
+}
+  @media (max-width: 600px) {
+    .list, .links, .contacts {
+      display: none;
+    }
+    .footerBlock {
+      justify-content: center;
+      width: auto;
+    }
+    .footer {
+      width: 100%;
+    }
+    .social {
+      width: 200px;
+      margin-top: 25px;
+    }
+    .social a, .social img {
+      width: 48px;
+      height: 48px;
+    }
+    .emblem button {
+      height: 30px;
+    }
+    .blindmode {
+        text-align: center;
+        font-size: 18px;
+    }
+    .footer {
+        height:fit-content;
+    }
+  }
+@media (prefers-color-scheme: dark) {
+    .emblemimg {
+        content: url('./bstu.png');
+    }
+    .footer, .emblem button {
+        background-color: black;
+        color: white;
+        border-color: white;
+    }
+    .emblem button:hover {
+        background-color: var(--_red);
+        color: white;
+    }
+    .contacts h2, .contacts, .emblembutton, .footerBlock li, .footerBlock h3, .copyright {
+        color: white;
+    } 
+    .socialbuttons {
+        filter: invert(0);
+    }
+    .ulfooter li:hover {
+        color: red;
+    }
+    .footerBlock a:link {
+        color: white;
+        transition: 0.5s;
+    }
+    .footerBlock a:link:hover {
+        color: red;
+    }
+    .blind {
+        color: red;
+    }
+    .blind:hover {
+        color: var(--_red);
     }
 }
