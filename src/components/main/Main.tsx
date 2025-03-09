@@ -22,7 +22,7 @@ export const Main = () => {
           window.addEventListener("resize", handleResize);
     }, [])
     return (
-        <div className="main">
+        <div className={styles.main}>
             <MySlider/>
             <div className={styles.abiturient}>
                 <p>Абитуриент? Присоединяйся к нам!</p>
