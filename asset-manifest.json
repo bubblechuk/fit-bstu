@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/fit-bstu/static/css/main.aa27fd32.css",
-    "main.js": "/fit-bstu/static/js/main.73ebb9e0.js",
+    "main.js": "/fit-bstu/static/js/main.cba68116.js",
     "static/js/453.902068b5.chunk.js": "/fit-bstu/static/js/453.902068b5.chunk.js",
     "static/media/slider3.jpg": "/fit-bstu/static/media/slider3.01a97f14d2ce18a85638.jpg",
     "static/media/bg_abiturient.jpg": "/fit-bstu/static/media/bg_abiturient.31df87db1ff6e8e0acd1.jpg",
@@ -36,11 +36,11 @@
     "static/media/right.svg": "/fit-bstu/static/media/right.0de4b9676e20e6ff911de02c27e13b15.svg",
     "static/media/menu.svg": "/fit-bstu/static/media/menu.00718a1306e1a62aee5aaeb47719ae51.svg",
     "main.aa27fd32.css.map": "/fit-bstu/static/css/main.aa27fd32.css.map",
-    "main.73ebb9e0.js.map": "/fit-bstu/static/js/main.73ebb9e0.js.map",
+    "main.cba68116.js.map": "/fit-bstu/static/js/main.cba68116.js.map",
     "453.902068b5.chunk.js.map": "/fit-bstu/static/js/453.902068b5.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.aa27fd32.css",
-    "static/js/main.73ebb9e0.js"
+    "static/js/main.cba68116.js"
   ]
 }
