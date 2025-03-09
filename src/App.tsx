@@ -17,10 +17,10 @@ function App() {
                 <Header button={setSearch} search={search}/>
                 <div className="content">
                     <Routes>
-                        <Route path="/" element={<Main />} />
-                        <Route path='/archive' element={<NewsArchive/>}/>
-                        <Route path='/article' element={<NewsPage/>}/> 
-                        <Route path="/faculty" element={<Faculty />}>
+                        <Route path="fit-bstu" element={<Main />} />
+                        <Route path='archive' element={<NewsArchive/>}/>
+                        <Route path='article' element={<NewsPage/>}/> 
+                        <Route path="faculty" element={<Faculty />}>
                             <Route path="about" element={<div>О факультете</div>} />
                             <Route path="contacts" element={<Contacts />} />
                             <Route path="eduwork" element={<div></div>} />

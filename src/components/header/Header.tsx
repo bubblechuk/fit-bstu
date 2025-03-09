@@ -17,7 +17,7 @@ export const Header: React.FC<ButtonHandler> = ({button, search}) => {
     var navigate = useNavigate();
     const [slider, setSlider] = useState<boolean>(false);
     const sliderOptions: SliderOption[] = [
-        {name: "Главная", link: '/'},
+        {name: "Главная", link: '/fit-bstu'},
         {name: "О факультете", link: "/faculty/contacts"},
         {name: "Студентам", link: "/student"},
         {name: "Абитуриентам", link: "/abiturient"},
@@ -32,7 +32,7 @@ export const Header: React.FC<ButtonHandler> = ({button, search}) => {
                     <img className={styles.option} src={Search} alt="Search Icon" />
                     <span>Поиск</span>
                 </div>
-                <img onClick={() => {navigate('/')}} className={styles.logo} src={Logo} alt="Logo" />
+                <img onClick={() => {navigate('/fit-bstu')}} className={styles.logo} src={Logo} alt="Logo" />
                 <div className={styles.button} onClick={() => setSlider(!slider)}>
                     <span>Меню</span>
                     <img className={styles.option} src={Menu} alt="Menu Icon" />
